@@ -9,13 +9,12 @@
 1.1.3Dスキャンデータ　→　model/3DSCAN.stl  
 1.2.ボディフレームとカバーのジョイント部をデータ化 → model/joint.stl  
 1.3.3Dプリンタ出力し、実際に確認  
-1.4.カバーのデザイン  <<  誰かお願いします！  
+1.4.カバーのデザイン  >> tomohiroinoueさんがPrototype1,2.stlを作成してくれました。  
 2.電子工作や機構のアイデアをまとめ玩具を製作　<<　今ここ！  
 3.一度作品発表 （3DP Fab Challengeにて)  
 4.1〜3で既存玩具を基にデータを作成していたものを、全てのデータをMake出来る形に再構築する。
 5.stlデータ等はgithubや各種データ共有サイトで公開する。
 
 
-このプロジェクトはFabLabk北加賀屋での活動を主とする。  
-また，   
+このプロジェクトはFabLabk北加賀屋での活動を主とする。     
 [FabLab Kitakagaya](http://fablabkitakagaya.org/ "FabLab北加賀屋")  
