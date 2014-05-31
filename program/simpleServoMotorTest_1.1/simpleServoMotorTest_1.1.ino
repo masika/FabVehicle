@@ -11,10 +11,9 @@ const int PM_PIN = 6;//パラメータピン？アナログ
 
 // モーター用パラメータ変数
 int dcMotorSpeed;        // DCモータ駆動用のパラメータ
-int servoMotorAngle;        // サーボーモータのパラメータ(角度)
+int servoMotorAngle = 90;      // サーボの初期値;        // サーボーモータのパラメータ(角度)
 
-//
-int diS;
+
 
 // モータ用パラメータ定数
 const int EACH_SERVO_MOTOR_CHANGE=  12;     // 操作一回当りのサーボモータパラメータ変化量
@@ -23,7 +22,11 @@ const int MAX_DC_MOTOR_RANGE = 150;    // DCモータパラメータの最大値
 const int MIN_SERVO_MOTOR_RANGE =  78;    // サーボモータパラメータの最小値
 const int MAX_SERVO_MOTOR_RANGE = 102;    // サーボモータパラメータの最大値
 
-int changeCycle;//ループ周期
+int changeCycle = 500;//ループ初期値ms;//ループ周期
+
+int direction=0; //-1:左　0:直進 　1:右
+int direction_arr[]={0,1,1,1,1,0,-1,-1,-1,-1};
+int direction_time=0;
 
 //---------------------------------------------------
 // セットアップ関数
@@ -34,11 +37,7 @@ void setup()
   pinMode(DC_PIN1 ,OUTPUT);
   pinMode(DC_PIN2 ,OUTPUT);
   myservo.attach(SERVO_PIN);
-  
-  diS    = 1;
   dcMotorSpeed = MAX_DC_MOTOR_RANGE;    // DCモータの初期値
-  servoMotorAngle = 90;      // サーボの初期値
-  changeCycle = 500;//ループ初期値ms
 }
 
 //---------------------------------------------------
@@ -63,7 +62,7 @@ void MotorDrive( int iIn1Pin, int iIn2Pin, int dcMotorSpeed )
 }
 
 //---------------------------------------------------
-// クリッピング関数
+// クリッピング関数(ユーティリティ)
 //---------------------------------------------------
 int Clip( int vmin, int vmax, int value )
 {
@@ -87,6 +86,8 @@ void loop()
 runEight();
 
 //turn(-1);//左旋回
+
+delay ( changeCycle );
 }
 
 
@@ -94,9 +95,7 @@ runEight();
 	8の字走行(ただし8の字を描くはモーターの回転スピードに依存)
 */--------------------------------------------------
 
-int direction=0; //-1:左　0:直進 　1:右
-int direction_arr[]={0,1,1,1,1,0,-1,-1,-1,-1};
-int direction_time=0;
+
 
 //8の字
 void runEight(){
@@ -113,7 +112,7 @@ void runEight(){
     direction_time=0;
   }
 
-  delay ( changeCycle );
+  
 }
 
 //旋回
