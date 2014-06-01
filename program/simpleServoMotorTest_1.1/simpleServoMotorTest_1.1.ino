@@ -106,7 +106,7 @@ void runEight(){
 	servoMotorAngle=Clip(MIN_SERVO_MOTOR_RANGE,MAX_SERVO_MOTOR_RANGE,90+(direction*EACH_SERVO_MOTOR_CHANGE));  
 	myservo.write(servoMotorAngle);
   
-  if(sizeof direction_arr<10){
+  if(direction_time < sizeof direction_arr  / sizeof direction_arr[0]){
   	  direction_time++;
   }else{
     direction_time=0;
