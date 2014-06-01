@@ -91,9 +91,9 @@ delay ( changeCycle );
 }
 
 
-/*--------------------------------------------------
-	8の字走行(ただし8の字を描くはモーターの回転スピードに依存)
-*/--------------------------------------------------
+//--------------------------------------------------
+//	8の字走行(ただし8の字を描くはモーターの回転スピードに依存)
+//--------------------------------------------------
 
 
 
@@ -102,11 +102,11 @@ void runEight(){
 	dcMotorSpeed = Clip(MIN_DC_MOTOR_RANGE,MAX_DC_MOTOR_RANGE,dcMotorSpeed);
 	MotorDrive(DC_PIN1,DC_PIN2,dcMotorSpeed);
     
-	direction=direction_arr[direction_time]
+	direction=direction_arr[direction_time];
 	servoMotorAngle=Clip(MIN_SERVO_MOTOR_RANGE,MAX_SERVO_MOTOR_RANGE,90+(direction*EACH_SERVO_MOTOR_CHANGE));  
 	myservo.write(servoMotorAngle);
   
-  if(direction_arr.length<10){
+  if(sizeof direction_arr<10){
   	  direction_time++;
   }else{
     direction_time=0;
@@ -124,6 +124,4 @@ void turn(int dir){
 	servoMotorAngle=Clip(MIN_SERVO_MOTOR_RANGE,MAX_SERVO_MOTOR_RANGE,90+(direction*EACH_SERVO_MOTOR_CHANGE));  
 	myservo.write(servoMotorAngle);
 }
-
-
 
